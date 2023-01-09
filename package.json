@@ -1,0 +1,17 @@
+{
+  "name": "api-rest-node-typescript",
+  "version": "1.0.0",
+  "description": "Api rest com node e typescript",
+  "main": "index.js",
+  "author": "Bruno Barros",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.15",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.4"
+  }
+}
