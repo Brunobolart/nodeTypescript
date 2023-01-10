@@ -1,15 +1,10 @@
 import express  from 'express';
 
+import {router} from './routes';
 
   const Server  =  express();
 
-   interface Iaut{
-
-   }
-
-
-  Server.get('/', (req,  res)  =>  {
-  res.send('Olá, Dev!');
-});
+  Server.use(express.json());
+  Server.use(router);
 
 export {Server};
