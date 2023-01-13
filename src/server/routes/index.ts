@@ -5,14 +5,33 @@ import { CidadesController } from './../controllers';
 const router = Router();
 
 
-router.get('/', (req,  res)  =>  {
-    res.send('Olá, Dev!');
-  });
+router.get('/', (req, res) => {
+  res.send('Olá, Dev!');
+});
 
-  
-router.post('/cidades', CidadesController.Create);
+
+router.get('/cidades',
+  CidadesController.getAllValidation,
+  CidadesController.getAll);
+
+router.get('/cidades/:id',
+  CidadesController.getByIdValidation,
+  CidadesController.getById);
+
+router.put('/cidades/:id',
+  CidadesController.updateByIdValidation,
+  CidadesController.updateById);
+
+router.delete('/cidades/:id',
+  CidadesController.deleteByIdValidation,
+  CidadesController.deleteById);
+
+router.post('/cidades',
+  CidadesController.createValidation,
+  CidadesController.Create);
+
 
 // return res.status(StatusCodes.UNAUTHORIZED).json(req.body);
 
 
-export {router};
+export { router };

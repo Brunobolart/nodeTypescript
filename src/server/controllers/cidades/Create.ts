@@ -1,17 +1,31 @@
-import { Request, Response } from "express";
+import { Request, RequestHandler, Response } from "express";
+import { StatusCodes } from "http-status-codes";
+import * as yup from 'yup';
+import { Validation } from "../../shared/middlewares";
+
 
 interface ICidades {
-    id: BigInteger,
-    cidade: string;
-    estado: string;
+   cidade: string;
+   estado: string;
 }
 
 
-export const Create = (req: Request<{}, {}, ICidades>, res: Response) => { 
+
+export const createValidation = Validation((getSchema) => ({
+    body: getSchema<ICidades>(yup.object().shape({
+        cidade: yup.string().min(3).required(),
+        estado: yup.string().max(2).required()
+    }))
+    
+
+}));
+
+
+export const Create = async (req: Request<{}, {}, ICidades>, res: Response) => {
    
-    const data: ICidades = req.body;
-    console.log(data);
-    return res.send('Create');
+    console.log(req.body);
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não implementado');
+
 
 }
 
