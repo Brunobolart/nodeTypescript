@@ -9,27 +9,13 @@ router.get('/', (req, res) => {
   res.send('Olá, Dev!');
 });
 
-
-router.get('/cidades',
-  CidadesController.getAllValidation,
-  CidadesController.getAll);
-
-router.get('/cidades/:id',
-  CidadesController.getByIdValidation,
-  CidadesController.getById);
-
-router.put('/cidades/:id',
-  CidadesController.updateByIdValidation,
-  CidadesController.updateById);
-
-router.delete('/cidades/:id',
-  CidadesController.deleteByIdValidation,
-  CidadesController.deleteById);
-
-router.post('/cidades',
-  CidadesController.createValidation,
-  CidadesController.Create);
-
+// CIDADES 
+router.get('/cidades', CidadesController.getAllValidation, CidadesController.getAll);
+router.get('/cidades/:id',CidadesController.getByIdValidation,CidadesController.getById);
+router.put('/cidades/:id',CidadesController.updateByIdValidation,CidadesController.updateById);
+router.delete('/cidades/:id',CidadesController.deleteByIdValidation,CidadesController.deleteById);
+router.post('/cidades',CidadesController.createValidation,CidadesController.Create);
+// -- CIDADES -- //
 
 // return res.status(StatusCodes.UNAUTHORIZED).json(req.body);
 
