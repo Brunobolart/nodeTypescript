@@ -14,7 +14,7 @@ interface ICidades {
 export const createValidation = Validation((getSchema) => ({
     body: getSchema<ICidades>(yup.object().shape({
         cidade: yup.string().min(3).required(),
-        estado: yup.string().max(2).required()
+        estado: yup.string().min(2).max(2).required()
     }))
     
 
@@ -24,7 +24,7 @@ export const createValidation = Validation((getSchema) => ({
 export const Create = async (req: Request<{}, {}, ICidades>, res: Response) => {
    
     console.log(req.body);
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não implementado');
+    return res.status(StatusCodes.CREATED).json(1);
 
 
 }
