@@ -12,7 +12,7 @@ export const Create = async (cidades: Omit<ICidades, 'id'>): Promise<number | Er
             return result;
          }
 
-         return new Error(`Erro ao criar o registro P${ETableNames.cidades}`);
+         return new Error(`Erro ao criar o registro ${ETableNames.cidades}`);
        
      } catch (error) {
         console.log(error);
