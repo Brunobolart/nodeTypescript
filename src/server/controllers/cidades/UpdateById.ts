@@ -1,6 +1,7 @@
 import { Request, RequestHandler, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import * as yup from 'yup';
+import { ICidades } from "../../database/models";
 import { Validation } from "../../shared/middlewares";
 
 
@@ -8,10 +9,7 @@ interface IParamsProps {
    id?: number;
 }
 
-interface IBodyProps {
-    cidade?: string;
-    estado?: string;
- }
+interface IBodyProps extends Omit<ICidades, 'id'> {}
 
 
 

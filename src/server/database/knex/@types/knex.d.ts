@@ -1,8 +1,10 @@
+import { ICidades } from '../../models';
+
 
 declare module 'knex/types/tables' {
-    interface tables {
-      //  cidade: ICidade
-      //  pessoa: IPessoa
-      //  usuario: IUsuario
-    }
+  interface Tables {
+    cidades: ICidades
+    // pessoas: IPessoas
+    // usuarios: IUsuarios
+  }
 }
