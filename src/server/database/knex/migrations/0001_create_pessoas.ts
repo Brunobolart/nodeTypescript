@@ -14,7 +14,7 @@ export async function up(knex: Knex){
       .onUpdate('CASCADE')
       .onDelete('RESTRICT');
       
-      table.comment('Tabela para armazenamento de pessoas');
+      table.comment(`Tabela para armazenamento de ${ETableNames.pessoas}`);
     }).then(() => {
         console.log(`# Created table ${ETableNames.pessoas}`);
     });

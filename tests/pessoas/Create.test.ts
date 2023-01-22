@@ -3,13 +3,22 @@ import { testServer } from "../jest.setup";
 
 describe('Pessoas - Create', () => {
 
+    let cidadeId: number | undefined = undefined;
+    beforeAll(async () => {
+      const resCidade = await testServer
+        .post('/cidades')
+        .send({ nome: 'Imperatriz', estado: 'MA' });
+  
+      cidadeId = resCidade.body;
+    });
+
     it('Criar registro', async () => {
         const res1 = await testServer.post('/pessoa')
             .send({
                nome: 'bruno',
                sobrenome: 'barros',
                email: 'bruno@gmail.com',
-               cidadeId: 1
+               cidadeId: cidadeId
             });
 
         expect(res1.statusCode).toEqual(StatusCodes.CREATED);
