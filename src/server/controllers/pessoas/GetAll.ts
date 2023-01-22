@@ -1,7 +1,7 @@
 import { Request, RequestHandler, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import * as yup from 'yup';
-import { CidadesProviders } from "../../database/providers/cidades";
+import { PessoasProviders } from "../../database/providers/pessoas";
 import { Validation } from "../../shared/middlewares";
 
 
@@ -27,10 +27,10 @@ export const getAllValidation = Validation((getSchema) => ({
 
 
 export const getAll = async (req: Request<{}, {}, {}, IQueryProps>, res: Response) => {
-     const result = await CidadesProviders.GetAll(req.query.page || 1, req.query.limit || 7, 
+     const result = await PessoasProviders.GetAll(req.query.page || 1, req.query.limit || 7, 
         req.query.filter || '', Number(req.query.id));
 
-     const count = await CidadesProviders.Count(req.query.filter);
+     const count = await PessoasProviders.Count(req.query.filter);
 
      if(result instanceof Error){
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({

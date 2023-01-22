@@ -1,7 +1,7 @@
 import { Request, RequestHandler, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import * as yup from 'yup';
-import { CidadesProviders } from "../../database/providers/cidades";
+import { PessoasProviders } from "../../database/providers/pessoas";
 import { Validation } from "../../shared/middlewares";
 
 
@@ -30,7 +30,7 @@ export const getById = async (req: Request<IParamsProps>, res: Response) => {
     });
 
     
-    const result = await CidadesProviders.GetById(req.params.id)
+    const result = await PessoasProviders.GetById(req.params.id)
     if(result instanceof Error){
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             errors:{

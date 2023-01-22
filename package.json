@@ -11,6 +11,7 @@
     "test": "jest",
     "knex:migrate": "yarn knex --knexfile ./src/server/database/knex/Environment.ts migrate:latest",
     "knex:rollback": "yarn knex --knexfile ./src/server/database/knex/Environment.ts migrate:rollback",
+    "migrate:unlock": "yarn knex --knexfile ./src/server/database/knex/Environment.ts migrate:unlock",
     "knex:rollback-all": "yarn knex --knexfile ./src/server/database/knex/Environment.ts migrate:rollback --all",
     "knex:seed": "yarn knex --knexfile ./src/server/database/knex/Environment.ts seed:run"
   },

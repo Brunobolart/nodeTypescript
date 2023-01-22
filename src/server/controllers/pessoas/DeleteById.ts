@@ -1,7 +1,7 @@
 import { Request, RequestHandler, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import * as yup from 'yup';
-import { CidadesProviders } from "../../database/providers/cidades";
+import { PessoasProviders } from "../../database/providers/pessoas";
 import { Validation } from "../../shared/middlewares";
 
 
@@ -11,7 +11,7 @@ interface IParamsProps {
 
 
 
-export const getByIdValidation = Validation((getSchema) => ({
+export const deleteByIdValidation = Validation((getSchema) => ({
     params: getSchema<IParamsProps>(yup.object().shape({
         id: yup.number().integer().required().moreThan(0),
         
@@ -21,7 +21,8 @@ export const getByIdValidation = Validation((getSchema) => ({
 }));
 
 
-export const getById = async (req: Request<IParamsProps>, res: Response) => {
+export const deleteById = async (req: Request<IParamsProps>, res: Response) => {
+    
     if(!req.params.id) 
     return res.status(StatusCodes.BAD_REQUEST).json({
         errors:{
@@ -29,8 +30,7 @@ export const getById = async (req: Request<IParamsProps>, res: Response) => {
         }
     });
 
-    
-    const result = await CidadesProviders.GetById(req.params.id)
+    const result = await PessoasProviders.DeleteById(req.params.id)
     if(result instanceof Error){
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             errors:{
@@ -41,7 +41,7 @@ export const getById = async (req: Request<IParamsProps>, res: Response) => {
 
 
     console.log(req.params);
-    return res.status(StatusCodes.OK).send(result);
+    return res.status(StatusCodes.NO_CONTENT).send();
 
 
 }

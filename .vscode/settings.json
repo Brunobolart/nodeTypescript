@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "node_db",
+            "database": "${workspaceFolder:nodeTypescript}/database.sqlite"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}

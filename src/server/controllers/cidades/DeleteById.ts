@@ -1,7 +1,7 @@
 import { Request, RequestHandler, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import * as yup from 'yup';
-import { CidadesProviders } from "../../database/providers";
+import { CidadesProviders } from "../../database/providers/cidades";
 import { Validation } from "../../shared/middlewares";
 
 
