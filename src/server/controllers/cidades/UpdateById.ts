@@ -21,7 +21,7 @@ export const updateByIdValidation = Validation((getSchema) => ({
     })),
     body: getSchema<IBodyProps>(yup.object().shape({
         cidade: yup.string().required().min(3),
-        estado: yup.string().required().min(2).max(2)
+        uf: yup.string().required().min(2).max(2)
         
     }))
     

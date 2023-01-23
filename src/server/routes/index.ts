@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { UsuariosController } from '../controllers/usuarios';
 import { CidadesController, PessoasController } from './../controllers';
 
 const router = Router();
@@ -19,12 +20,18 @@ router.post('/cidades',CidadesController.createValidation,CidadesController.Crea
 
 
 // PESSOAS 
-router.get('/pessoa', PessoasController.getAllValidation, PessoasController.getAll);
-router.get('/pessoa/:id',PessoasController.getByIdValidation,PessoasController.getById);
-router.put('/pessoa/:id',PessoasController.updateByIdValidation,PessoasController.updateById);
-router.delete('/pessoa/:id',PessoasController.deleteByIdValidation,PessoasController.deleteById);
-router.post('/pessoa',PessoasController.createValidation,PessoasController.Create);
+router.get('/pessoas', PessoasController.getAllValidation, PessoasController.getAll);
+router.get('/pessoas/:id',PessoasController.getByIdValidation,PessoasController.getById);
+router.put('/pessoas/:id',PessoasController.updateByIdValidation,PessoasController.updateById);
+router.delete('/pessoas/:id',PessoasController.deleteByIdValidation,PessoasController.deleteById);
+router.post('/pessoas',PessoasController.createValidation,PessoasController.Create);
 // -- PESSOAS -- //
+
+// USUÁRIOS 
+router.post('/entrar',UsuariosController.signInValidation,UsuariosController.SignIn);
+router.post('/cadastrar',UsuariosController.signUpValidation,UsuariosController.SignUp);
+// -- USUÁRIOS -- //
+
 
 // return res.status(StatusCodes.UNAUTHORIZED).json(req.body);
 

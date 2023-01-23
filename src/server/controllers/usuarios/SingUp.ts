@@ -1,30 +1,32 @@
+
 import { Request, RequestHandler, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 import * as yup from 'yup';
 import { Knex } from "../../database/knex";
-import { ICidades } from "../../database/models";
-import { CidadesProviders } from "../../database/providers/cidades";
+import { IUsuarios } from "../../database/models";
+import { UsuariosProviders } from "../../database/providers/usuarios";
 
 import { Validation } from "../../shared/middlewares";
 
 
-interface IBodyProps extends Omit<ICidades, 'id'> {}
+interface IBodyProps extends Omit<IUsuarios, 'id'> {}
 
 
 
-export const createValidation = Validation((getSchema) => ({
+export const signUpValidation = Validation((getSchema) => ({
     body: getSchema<IBodyProps>(yup.object().shape({
-        cidade: yup.string().min(3).max(150).required(),
-        uf: yup.string().min(2).max(2).required()
+        nome: yup.string().min(3).max(150).required(),
+        email: yup.string().email().min(5).required(),
+        senha:  yup.string().min(6).max(20).required()
     }))
     
 
 }));
 
 
-export const Create = async (req: Request<{}, {}, IBodyProps>, res: Response) => {
+export const SignUp = async (req: Request<{}, {}, IBodyProps>, res: Response) => {
    
-    const result = await CidadesProviders.Create(req.body);
+    const result = await UsuariosProviders.Create(req.body);
     
     if(result instanceof Error){
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
@@ -40,4 +42,5 @@ export const Create = async (req: Request<{}, {}, IBodyProps>, res: Response) =>
 
 
 }
+
 

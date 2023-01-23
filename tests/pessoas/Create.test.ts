@@ -7,13 +7,13 @@ describe('Pessoas - Create', () => {
     beforeAll(async () => {
       const resCidade = await testServer
         .post('/cidades')
-        .send({ nome: 'Imperatriz', estado: 'MA' });
+        .send({ cidade: 'Imperatriz', uf: 'MA' });
   
       cidadeId = resCidade.body;
     });
 
     it('Criar registro', async () => {
-        const res1 = await testServer.post('/pessoa')
+        const res1 = await testServer.post('/pessoas')
             .send({
                nome: 'bruno',
                sobrenome: 'barros',
@@ -27,7 +27,7 @@ describe('Pessoas - Create', () => {
     });
 
     it('Tentar criar pessoa validando qtd de caracteres esperado pelos campos!', async () => {
-        const res1 = await testServer.post('/pessoa')
+        const res1 = await testServer.post('/pessoas')
             .send({
                 nome: 'br',
                 sobrenome: 'b',

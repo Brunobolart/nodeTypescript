@@ -1,11 +1,11 @@
 import { StatusCodes } from "http-status-codes";
 import { testServer } from "../jest.setup";
 
-describe('Pessoa - UpdateById', () => {
+describe('pessoas - UpdateById', () => {
 
     it('Atualiza os Registros pelo ID', async () => {
 
-        const res1 = await testServer.post('/pessoa')
+        const res1 = await testServer.post('/pessoas')
             .send({
                 nome: 'bruno',
                 sobrenome: 'barros',
@@ -15,7 +15,7 @@ describe('Pessoa - UpdateById', () => {
 
         expect(res1.statusCode).toEqual(StatusCodes.CREATED);
 
-        const resAtualizada = await testServer.put(`/pessoa/${res1.body}`)
+        const resAtualizada = await testServer.put(`/pessoas/${res1.body}`)
             .send({
                 nome: 'bruno',
                 sobrenome: 'Albuquerque',
@@ -30,7 +30,7 @@ describe('Pessoa - UpdateById', () => {
     });
 
     it('Tenta Atualizar registro que não existe', async () => {
-        const res1 = await testServer.get('/pessoa/99999').send();
+        const res1 = await testServer.get('/pessoas/99999').send();
 
         expect(res1.statusCode).toEqual(StatusCodes.INTERNAL_SERVER_ERROR);
         expect(res1.body).toHaveProperty('errors.default');

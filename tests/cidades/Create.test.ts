@@ -7,7 +7,7 @@ describe('Cidades - Create', () => {
         const res1 = await testServer.post('/cidades')
             .send({
                 cidade: 'Cafundo',
-                estado: 'PE'
+                uf: 'PE'
             });
 
         expect(res1.statusCode).toEqual(StatusCodes.CREATED);
@@ -19,12 +19,12 @@ describe('Cidades - Create', () => {
         const res1 = await testServer.post('/cidades')
             .send({
                 cidade: 'Ca',
-                estado: 'P'
+                uf: 'P'
             });
 
         expect(res1.statusCode).toEqual(StatusCodes.BAD_REQUEST);
         expect(res1.body).toHaveProperty('errors.body.cidade');
-        expect(res1.body).toHaveProperty('errors.body.estado');
+        expect(res1.body).toHaveProperty('errors.body.uf');
 
     });
 

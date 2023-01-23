@@ -1,11 +1,11 @@
 import { StatusCodes } from "http-status-codes";
 import { testServer } from "../jest.setup";
 
-describe('Pessoa - GetById', () => {
+describe('pessoas - GetById', () => {
 
     it('Buscar os Registros pelo ID', async () => {
 
-        const res1 = await testServer.post('/pessoa')
+        const res1 = await testServer.post('/pessoas')
             .send({
                 nome: 'bruno',
                 sobrenome: 'barros',
@@ -15,7 +15,7 @@ describe('Pessoa - GetById', () => {
 
         expect(res1.statusCode).toEqual(StatusCodes.CREATED);
 
-        const resBusca = await testServer.get(`/pessoa/${res1.body}`)
+        const resBusca = await testServer.get(`/pessoas/${res1.body}`)
             .send();
 
         expect(resBusca.statusCode).toEqual(StatusCodes.OK);
@@ -25,7 +25,7 @@ describe('Pessoa - GetById', () => {
     });
 
     it('Tenta buscar registro que não existe', async () => {
-        const res1 = await testServer.get('/pessoa/99999').send();
+        const res1 = await testServer.get('/pessoas/99999').send();
 
         expect(res1.statusCode).toEqual(StatusCodes.INTERNAL_SERVER_ERROR);
         expect(res1.body).toHaveProperty('errors.default');

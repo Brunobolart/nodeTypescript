@@ -8,7 +8,7 @@ describe('Cidades - GetById', () => {
         const res1 = await testServer.post('/cidades')
         .send({
             cidade: 'Cafundo',
-            estado: 'PE'
+            uf: 'PE'
         });
 
         expect(res1.statusCode).toEqual(StatusCodes.CREATED);
@@ -18,7 +18,7 @@ describe('Cidades - GetById', () => {
 
         expect(resBusca.statusCode).toEqual(StatusCodes.OK);
         expect(resBusca.body).toHaveProperty('cidade');
-        expect(resBusca.body).toHaveProperty('estado');
+        expect(resBusca.body).toHaveProperty('uf');
         
     });
 

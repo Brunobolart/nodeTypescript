@@ -8,7 +8,7 @@ describe('Cidades - DeleteById', () => {
         const res1 = await testServer.post('/cidades')
         .send({
             cidade: 'Cafundo',
-            estado: 'PE'
+            uf: 'PE'
         });
 
         expect(res1.statusCode).toEqual(StatusCodes.CREATED);

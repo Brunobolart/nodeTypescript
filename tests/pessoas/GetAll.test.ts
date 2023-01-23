@@ -1,11 +1,11 @@
 import { StatusCodes } from "http-status-codes";
 import { testServer } from "../jest.setup";
 
-describe('Pessoas - GetAll', () => {
+describe('pessoas - GetAll', () => {
 
     it('Buscar todos os Registros', async () => {
 
-        const res1 = await testServer.post('/pessoa')
+        const res1 = await testServer.post('/pessoas')
             .send({
                 nome: 'bruno',
                 sobrenome: 'barros',
@@ -15,7 +15,7 @@ describe('Pessoas - GetAll', () => {
 
         expect(res1.statusCode).toEqual(StatusCodes.CREATED);
 
-        const resBusca = await testServer.get('/pessoa')
+        const resBusca = await testServer.get('/pessoas')
             .send();
 
         expect(Number(resBusca.header['x-total-count'])).toBeGreaterThan(0);
