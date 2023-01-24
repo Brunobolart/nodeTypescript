@@ -7,6 +7,7 @@ import { IUsuarios } from "../../database/models";
 import { UsuariosProviders } from "../../database/providers/usuarios";
 
 import { Validation } from "../../shared/middlewares";
+import { JWTService, PasswordCrypto } from "../../shared/services";
 
 
 interface IBodyProps extends Omit<IUsuarios, 'id' | 'nome'> { }
@@ -38,7 +39,8 @@ export const SignIn = async (req: Request<{}, {}, IBodyProps>, res: Response) =>
         });
     }
 
-    if (senha !== result.senha) {
+    const passwordMatch = await PasswordCrypto.verityPassword(senha, result.senha);
+    if (!passwordMatch) {
         return res.status(StatusCodes.UNAUTHORIZED).json({
             errors: {
                 default: Error('Senha incorreta!')
@@ -46,8 +48,19 @@ export const SignIn = async (req: Request<{}, {}, IBodyProps>, res: Response) =>
         });
     } else {
 
+        const accessToken = JWTService.sign({uid: result.id})
+        if (accessToken === 'JWT_SECRET_NOT_FOUND') {
+           
+            return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+                errors: {
+                    default: Error('Erro ao gerar o token de acesso!')
+                }
+            });
+        }
+        
+
         console.log(req.body);
-        return res.status(StatusCodes.OK).json({accessToken: 'teste.teste.teste'});
+        return res.status(StatusCodes.OK).json({accessToken});
     }
 
 

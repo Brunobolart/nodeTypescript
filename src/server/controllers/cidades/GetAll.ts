@@ -51,6 +51,9 @@ export const getAll = async (req: Request<{}, {}, {}, IQueryProps>, res: Respons
     res.setHeader('x-total-count',count);
 
     console.log(req.query);
+    console.log('idUsuario '+req.headers.idUsuario);
+         
+
     return res.status(StatusCodes.OK).json(result);
 
 

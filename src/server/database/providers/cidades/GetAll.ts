@@ -20,7 +20,7 @@ export const GetAll = async (page: number, limit: number, filter: string, id: nu
             if(resultById) return [...result, resultById];
 
          }
-         
+
          return result;
        
      } catch (error) {
