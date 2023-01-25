@@ -30,7 +30,11 @@ router.post('/pessoas', ensureAuthenticated, PessoasController.createValidation,
 // -- PESSOAS -- //
 
 // USUÁRIOS 
-router.post('/entrar',UsuariosController.signInValidation,UsuariosController.SignIn);
+router.post('/entrar',UsuariosController.signInValidation,UsuariosController.SignIn, (req, res) => {
+       
+      res.header("Access-Control-Allow-Origin", "*");
+});
+
 router.post('/cadastrar',UsuariosController.signUpValidation,UsuariosController.SignUp);
 // -- USUÁRIOS -- //
 
