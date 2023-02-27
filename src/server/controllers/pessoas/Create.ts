@@ -17,6 +17,16 @@ export const createValidation = Validation((getSchema) => ({
         nome: yup.string().min(3).max(150).required(),
         sobrenome: yup.string().min(3).max(150).required(),
         email: yup.string().email().required(),
+        sexo: yup.string().max(15).required(),
+        patrimonio: yup.string().max(150).required(),
+        idade: yup.number().integer().required(),
+        habilidades: yup.string().max(255).required(),
+        profissao: yup.string().max(150).required(),
+        deficiente: yup.boolean().required(),
+        numeroSapato: yup.number().integer().max(60).required(),
+        dataNascimento: yup.string().required(),
+        dataHoraCad: yup.string().required(),
+        horaEvento: yup.string().required(),
         cidadeId: yup.number().integer().required()
     }))
     

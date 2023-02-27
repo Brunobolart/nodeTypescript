@@ -36,6 +36,11 @@ router.post('/entrar',UsuariosController.signInValidation,UsuariosController.Sig
 });
 
 router.post('/cadastrar',UsuariosController.signUpValidation,UsuariosController.SignUp);
+
+router.put('/usuarios/:id', ensureAuthenticated, UsuariosController.updateByIdValidation,UsuariosController.updateById);
+router.delete('/usuarios/:id', ensureAuthenticated, UsuariosController.deleteByIdValidation,UsuariosController.deleteById);
+router.get('/usuarios', ensureAuthenticated, UsuariosController.getAllValidation, UsuariosController.getAll);
+router.get('/usuarios/:id', ensureAuthenticated, UsuariosController.getByIdValidation, UsuariosController.getById);
 // -- USUÁRIOS -- //
 
 

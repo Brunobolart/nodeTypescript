@@ -5,6 +5,8 @@ import './shared/services/TraducoesYup';
 import {router} from './routes';
 // import cors from 'cors';
 
+
+ 
   const Server  =  express();
   
   const cors = require('cors');

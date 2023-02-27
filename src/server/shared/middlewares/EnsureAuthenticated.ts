@@ -1,11 +1,11 @@
 import { RequestHandler } from "express";
 import { StatusCodes } from "http-status-codes";
 import { JWTService } from "../services";
-
+import { LocalStorage } from "node-localstorage";
 
 
 export const ensureAuthenticated: RequestHandler = async (req, res, next) => {
-
+    const localStorage = new LocalStorage('./scratch');
     const {authorization} = req.headers;
     
     
@@ -18,7 +18,8 @@ export const ensureAuthenticated: RequestHandler = async (req, res, next) => {
       })
     }else{
 
-    console.log(authorization);
+      // imprime o token bearer
+     console.log(authorization);
 
     const [type, token] = authorization.split(' ');
    
@@ -30,6 +31,7 @@ export const ensureAuthenticated: RequestHandler = async (req, res, next) => {
         })
       }
 
+      
       const JWTData = JWTService.verify(token);
 
       if(JWTData === 'JWT_SECRET_NOT_FOUND'){
@@ -48,6 +50,8 @@ export const ensureAuthenticated: RequestHandler = async (req, res, next) => {
 
       console.log(JWTData);
       req.headers.idUsuario = JWTData.uid.toString();
+      localStorage.setItem('userId',JWTData.uid.toString());
+      
     }
 
       }

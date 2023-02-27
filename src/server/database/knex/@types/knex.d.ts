@@ -1,4 +1,5 @@
-import { IAuth, ICidades,IPessoas,IUsuarios } from '../../models';
+import { IAudity, IAuth, ICidades,IPessoas,IUsuarios } from '../../models';
+
 
 
 declare module 'knex/types/tables' {
@@ -6,6 +7,6 @@ declare module 'knex/types/tables' {
     cidades: ICidades;
     pessoas: IPessoas;
     usuarios: IUsuarios,
-    auth: IAuth
+    audity: IAudity
   }
 }

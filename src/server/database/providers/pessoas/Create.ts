@@ -6,6 +6,8 @@ export const Create = async (pessoas: Omit<IPessoas, 'id'>): Promise<number | Er
      try {
          const [result] = await Knex(ETableNames.pessoas).insert(pessoas).returning('id');
          
+         console.log(pessoas)
+
          if(typeof result === 'object'){
             return result.id;
          }else if(typeof result === 'number'){

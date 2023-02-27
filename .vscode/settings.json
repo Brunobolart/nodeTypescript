@@ -5,6 +5,32 @@
             "driver": "SQLite",
             "name": "node_db",
             "database": "${workspaceFolder:nodeTypescript}/database.sqlite"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "new_easycursostec",
+            "database": "new_easycursos",
+            "username": "root",
+            "password": "kadosh777"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "new_easycursos",
+            "database": "new_easycursos",
+            "username": "root",
+            "password": "kadosh777"
         }
     ],
     "sqltools.useNodeRuntime": true
