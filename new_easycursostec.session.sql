@@ -1,2 +1,1 @@
-SELECT * from vcidades
-°
+SELECT * from audity

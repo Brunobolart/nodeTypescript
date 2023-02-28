@@ -10,14 +10,15 @@ import { Validation } from "../../shared/middlewares";
 import { JWTService, PasswordCrypto } from "../../shared/services";
 
 
-interface IBodyProps extends Omit<IUsuarios, 'id' | 'nome'> { }
+interface IBodyProps extends Omit<IUsuarios, 'id' | 'nome' | 'data_cad' | 'permissao'> { }
 
 
 
 export const signInValidation = Validation((getSchema) => ({
     body: getSchema<IBodyProps>(yup.object().shape({
         email: yup.string().email().min(5).required(),
-        senha: yup.string().min(6).max(20).required()
+        senha: yup.string().min(6).max(20).required(),
+        
     }))
 
 

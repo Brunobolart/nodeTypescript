@@ -36,13 +36,12 @@ export const development: Knex.Config = {
     seeds: {
         directory: path.resolve(__dirname,'','seeds')
     },
-    
     connection: {
-        host: process.env.DATABASE_HOST,
-        port: Number(process.env.DATABASE_PORT),
-        user: process.env.DATABASE_USER,
-        password: process.env.DATABASE_PASSWORD,
-        database: process.env.DATABASE_DB
+        host: 'localhost',
+        port: 3306,
+        user: 'root',
+        password: 'kadosh777',
+        database: 'new_easycursos'
       }
 };
 
@@ -59,7 +58,9 @@ export const production: Knex.Config = {
         port: Number(process.env.DATABASE_PORT),
         user: process.env.DATABASE_USER,
         password: process.env.DATABASE_PASSWORD,
-        database: process.env.DATABASE_DB
+        database: process.env.DATABASE_DB,
+        timezone: 'UTC',
+        charset: 'utf8'
       }
 };
 

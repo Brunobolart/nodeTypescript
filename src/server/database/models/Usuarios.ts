@@ -4,4 +4,6 @@ export interface IUsuarios {
     nome: string;
     email: string;
     senha: string;
+    data_cad?: string;
+    permissao: string;
 }

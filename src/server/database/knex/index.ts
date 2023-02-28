@@ -19,10 +19,10 @@ mysql.Types.SET
 const getEnvironment = () => {
   
   switch (process.env.NODE_ENV) {
-    case 'production':  return production;
-    case 'test': return test;
+    case 'production': console.log('produção'); return production;
+    case 'test': console.log('test'); return test;
 
-    default: return development;
+    default: console.log('default'); return development;
   }
 };
 
